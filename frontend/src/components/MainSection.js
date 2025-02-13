@@ -68,7 +68,7 @@ const MainSection = () => {
               <div>OR</div>
               <div></div>
             </div>
-            <Record />
+            <Record setFile={setFile} />
           </div>
 
           <div>
