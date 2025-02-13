@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div>
+    <div className=" font-poppins w-[100vw] h-[100vh] overflow-x-hidden leading-[91.4%]">
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />

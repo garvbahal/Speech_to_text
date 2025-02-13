@@ -14,21 +14,30 @@ const Record = ({ setFile }) => {
       <ReactMediaRecorder
         audio
         render={({ startRecording, stopRecording, mediaBlobUrl }) => (
-          <div>
-            <div>
-              <button onClick={startRecording}>Start Recording</button>
+          <div className="flex flex-col w-full mt-7 ">
+            <div className="flex justify-between w-full space-x-14 mb-7">
+              <button
+                onClick={startRecording}
+                className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl"
+              >
+                START RECORDING
+              </button>
               <button
                 onClick={() => {
                   stopRecording();
                 }}
+                className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl"
               >
-                Stop Recording
+                STOP RECORDING
               </button>
             </div>
             {mediaBlobUrl && (
-              <div>
-                <button onClick={() => handleFileChange(mediaBlobUrl)}>
-                  Convert To text
+              <div className="flex justify-center">
+                <button
+                  onClick={() => handleFileChange(mediaBlobUrl)}
+                  className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl"
+                >
+                  CONVERT TO TEXT
                 </button>
               </div>
             )}
