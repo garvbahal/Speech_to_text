@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
 import Record from "./Record";
+import TranscriptionCard from "./TranscriptionCard";
 
 const MainSection = () => {
   const [transcription, setTranscription] = useState("");
@@ -72,10 +73,7 @@ const MainSection = () => {
           </div>
 
           <div>
-            <div>TRANSCRIPTION</div>
-            <div>
-              {transcription ? transcription : `No Transcription Available`}
-            </div>
+            <TranscriptionCard transcription={transcription} />
           </div>
         </div>
       )}

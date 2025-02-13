@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const HistoryPage = () => {
   return (
-    <div>HistoryPage</div>
-  )
-}
+    <div>
+      <h2>Let’s take a look at what you've transcribed so far </h2>
+    </div>
+  );
+};
 
-export default HistoryPage
+export default HistoryPage;

@@ -15,14 +15,16 @@ const Record = ({ setFile }) => {
         audio
         render={({ startRecording, stopRecording, mediaBlobUrl }) => (
           <div>
-            <button onClick={startRecording}>Start Recording</button>
-            <button
-              onClick={() => {
-                stopRecording();
-              }}
-            >
-              Stop Recording
-            </button>
+            <div>
+              <button onClick={startRecording}>Start Recording</button>
+              <button
+                onClick={() => {
+                  stopRecording();
+                }}
+              >
+                Stop Recording
+              </button>
+            </div>
             {mediaBlobUrl && (
               <div>
                 <button onClick={() => handleFileChange(mediaBlobUrl)}>
