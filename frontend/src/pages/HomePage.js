@@ -1,7 +1,7 @@
 import React from "react";
 import MainSection from "../components/MainSection";
 
-const HomePage = () => {
+const HomePage = ({ token }) => {
   return (
     <div className="w-[90%] max-w-[1100px] mx-auto flex flex-col">
       <h2 className=" mt-[62px] font-poppins text-[2.0225rem] font-normal text-BlueSpeech text-center">
@@ -12,7 +12,7 @@ const HomePage = () => {
         powered by cutting-edge AI technology
       </p>
 
-      <MainSection />
+      <MainSection token={token} />
     </div>
   );
 };

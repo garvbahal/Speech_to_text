@@ -3,8 +3,9 @@ import axios from "axios";
 import Spinner from "./Spinner";
 import Record from "./Record";
 import TranscriptionCard from "./TranscriptionCard";
+import toast from "react-hot-toast";
 
-const MainSection = () => {
+const MainSection = ({ token }) => {
   const [transcription, setTranscription] = useState("");
   const [file, setFile] = useState(null);
   const [spinner, setSpinner] = useState(false);
@@ -14,6 +15,10 @@ const MainSection = () => {
   }
 
   async function handleUpload() {
+    if (!token) {
+      toast.error("Log in First!");
+      return;
+    }
     setSpinner(true);
     if (!file) {
       return alert("Please select an audio file");
@@ -33,7 +38,7 @@ const MainSection = () => {
 
       setTranscription(response.data.transcription);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
     setSpinner(false);
   }
