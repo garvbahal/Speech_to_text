@@ -25,15 +25,19 @@ const LoginPage = ({ token, setToken }) => {
       toast.error("Fill the credentials first");
       return;
     }
-    const response = await axios.post("http://localhost:3001/api/v1/login", {
-      username: formData.username,
-      password: formData.password,
-    });
+    try {
+      const response = await axios.post("http://localhost:3001/api/v1/login", {
+        username: formData.username,
+        password: formData.password,
+      });
 
-    localStorage.setItem("token", response.data.token);
-    setToken(response.data.token);
-    toast.success("User Logged In successfully");
-    navigate("/");
+      localStorage.setItem("token", response.data.token);
+      setToken(response.data.token);
+      toast.success("User Logged In successfully");
+      navigate("/");
+    } catch (error) {
+      toast.error("Login failed! Please check your credentials");
+    }
   }
 
   useEffect(() => {

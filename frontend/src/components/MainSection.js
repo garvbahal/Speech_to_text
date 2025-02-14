@@ -28,13 +28,18 @@ const MainSection = ({ token }) => {
     formData.append("audio", file);
 
     try {
+      console.log("inside try block");
       const response = await axios.post(
         "http://localhost:3001/api/v1/transcribe",
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: token,
+          },
         }
       );
+      console.log("completing the try block");
 
       setTranscription(response.data.transcription);
     } catch (error) {
@@ -66,7 +71,7 @@ const MainSection = ({ token }) => {
               />
               <label
                 htmlFor="uploadbtn"
-                className="cursor-pointer w-[100%] h-[100%]"
+                className="cursor-pointer flex items-center justify-center w-[100%] h-[100%]"
               >
                 UPLOAD
               </label>

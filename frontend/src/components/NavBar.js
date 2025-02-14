@@ -1,12 +1,16 @@
 import React from "react";
 import toast from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const NavBar = ({ token, setToken }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   function handleLogOut() {
     localStorage.setItem("token", "");
     setToken(localStorage.getItem("token"));
     toast.success("User Logged Out Successfully");
+    navigate("/");
   }
 
   return (
@@ -18,7 +22,9 @@ const NavBar = ({ token, setToken }) => {
         <div className="flex space-x-[30px]">
           <NavLink
             to="/"
-            className="font-semibold font-poppins text-lg  text-white"
+            className={`${
+              location.pathname === "/" ? `font-semibold` : `font-normal`
+            }  font-poppins text-lg  text-white transition-all duration-200`}
           >
             HOME
           </NavLink>
@@ -26,7 +32,11 @@ const NavBar = ({ token, setToken }) => {
             <div className="flex gap-x-7 justify-center items-baseline">
               <NavLink
                 to="/history"
-                className="font-poppins text-white text-lg font-medium"
+                className={`${
+                  location.pathname === "/history"
+                    ? `font-semibold`
+                    : `font-normal`
+                }  font-poppins text-lg  text-white transition-all duration-200`}
               >
                 HISTORY
               </NavLink>
@@ -40,7 +50,9 @@ const NavBar = ({ token, setToken }) => {
           ) : (
             <NavLink
               to="/login"
-              className="font-poppins text-white text-lg font-medium"
+              className={`${
+                location.pathname === "/login" ? `font-semibold` : `font-normal`
+              }  font-poppins text-lg  text-white transition-all duration-200`}
             >
               LOGIN
             </NavLink>
