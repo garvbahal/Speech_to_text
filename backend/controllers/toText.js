@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 require("dotenv").config();
 const { SpeechClient } = require("@google-cloud/speech");
+const User = require("../models/UserModel");
 
 const speechClient = new SpeechClient({
   keyFilename: process.env.GOOGLE_CREDENTIALS_PATH,
@@ -48,8 +49,21 @@ exports.toText = async (req, res) => {
       .map((result) => result.alternatives[0].transcript)
       .join("\n");
 
-    console.log("Transcription:", transcription);
-    return res.json({ transcription });
+    const dbResponse = await Text.create({
+      text: transcription,
+      user: req.user.id,
+    });
+
+    const user = await User.findOne({ _id: req.user.id });
+
+    user.transcriptions = [...user.transcriptions, dbResponse._id];
+
+    await user.save();
+
+    return res.json({
+      transcription,
+      response: dbResponse,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
