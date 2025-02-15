@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
 
 const HistoryPage = ({ token }) => {
   const [history, setHistory] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [spinning, setSpinning] = useState(true);
   useEffect(() => {
     if (token) {
       fetchHistory();
@@ -14,7 +14,7 @@ const HistoryPage = ({ token }) => {
   }, [token]);
 
   async function fetchHistory() {
-    setLoading(true);
+    setSpinning(true);
     try {
       const response = await axios.get(
         "https://speech-to-text-backend-k978.onrender.com/api/v1/history",
@@ -28,8 +28,9 @@ const HistoryPage = ({ token }) => {
       setHistory(response.data.transcriptions);
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setSpinning(false);
     }
-    setLoading(false);
   }
 
   return (
@@ -42,7 +43,7 @@ const HistoryPage = ({ token }) => {
           Let’s take a look at what you've transcribed so far
         </h2>
         <div className="flex flex-wrap sm:justify-center items-center lg:justify-between gap-y-14 mt-8 mb-8">
-          {isLoading ? (
+          {spinning ? (
             <Spinner />
           ) : history.length > 0 ? (
             history.map((one, index) => {
