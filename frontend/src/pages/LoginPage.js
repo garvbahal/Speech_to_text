@@ -27,10 +27,13 @@ const LoginPage = ({ token, setToken }) => {
       return;
     }
     try {
-      const response = await axios.post("/api/v1/login", {
-        username: formData.username,
-        password: formData.password,
-      });
+      const response = await axios.post(
+        "https://speech-to-text-backend-k978.onrender.com/api/v1/login",
+        {
+          username: formData.username,
+          password: formData.password,
+        }
+      );
 
       localStorage.setItem("token", response.data.token);
       setToken(response.data.token);

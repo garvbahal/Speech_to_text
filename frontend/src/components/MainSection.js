@@ -32,12 +32,16 @@ const MainSection = ({ token }) => {
 
     try {
       console.log("inside try block");
-      const response = await axios.post("/api/v1/transcribe", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const response = await axios.post(
+        "https://speech-to-text-backend-k978.onrender.com/api/v1/transcribe",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       console.log("completing the try block");
 
       setTranscription(response.data.transcription);

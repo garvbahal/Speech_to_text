@@ -27,10 +27,13 @@ const SignUpPage = ({ token }) => {
       return;
     }
     try {
-      await axios.post("/api/v1/signup", {
-        username: formData.username,
-        password: formData.password,
-      });
+      await axios.post(
+        "https://speech-to-text-backend-k978.onrender.com/api/v1/signup",
+        {
+          username: formData.username,
+          password: formData.password,
+        }
+      );
       toast.success("Sign Up successful! Please log in");
       navigate("/login");
     } catch (error) {

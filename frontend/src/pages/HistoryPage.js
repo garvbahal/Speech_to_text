@@ -13,11 +13,14 @@ const HistoryPage = ({ token }) => {
 
   async function fetchHistory() {
     try {
-      const response = await axios.get("/api/v1/history", {
-        headers: {
-          Authorization: token,
-        },
-      });
+      const response = await axios.get(
+        "https://speech-to-text-backend-k978.onrender.com/api/v1/history",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
 
       setHistory(response.data.transcriptions);
     } catch (error) {

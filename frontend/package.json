@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://speech-to-text-backend-k978.onrender.com",
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.5",
     "@testing-library/jest-dom": "^5.17.0",
