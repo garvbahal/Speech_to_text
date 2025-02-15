@@ -32,16 +32,12 @@ const MainSection = ({ token }) => {
 
     try {
       console.log("inside try block");
-      const response = await axios.post(
-        "http://localhost:3001/api/v1/transcribe",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: token,
-          },
-        }
-      );
+      const response = await axios.post("/api/v1/transcribe", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: token,
+        },
+      });
       console.log("completing the try block");
 
       setTranscription(response.data.transcription);

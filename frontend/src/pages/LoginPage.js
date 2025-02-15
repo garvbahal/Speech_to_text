@@ -27,7 +27,7 @@ const LoginPage = ({ token, setToken }) => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3001/api/v1/login", {
+      const response = await axios.post("/api/v1/login", {
         username: formData.username,
         password: formData.password,
       });

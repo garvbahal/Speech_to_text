@@ -13,7 +13,7 @@ const HistoryPage = ({ token }) => {
 
   async function fetchHistory() {
     try {
-      const response = await axios.get("http://localhost:3001/api/v1/history", {
+      const response = await axios.get("/api/v1/history", {
         headers: {
           Authorization: token,
         },
@@ -36,8 +36,8 @@ const HistoryPage = ({ token }) => {
         </h2>
         <div className="flex flex-wrap sm:justify-center items-center lg:justify-between gap-y-14 mt-8 mb-8">
           {history.length > 0 ? (
-            history.map((one) => {
-              return <TranscriptionCard transcription={one} />;
+            history.map((one, index) => {
+              return <TranscriptionCard key={index} transcription={one} />;
             })
           ) : (
             <div className="mt-[62px] mx-auto font-poppins text-[2.0225rem] font-normal text-BlueSpeech leading-8">
