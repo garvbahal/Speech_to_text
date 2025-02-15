@@ -92,7 +92,7 @@ const LoginPage = ({ token, setToken }) => {
             >
               {isLoading ? <Loader /> : <p>LOGIN</p>}
             </button>
-            <div className="mt-[47px] mx-auto text-lg">
+            <div className="mt-[47px] text-nowrap mx-auto text-md lg:text-lg">
               If you don't have account{" "}
               <span className="text-BlueSpeech underline">
                 <NavLink to="/signup">Create Account</NavLink>

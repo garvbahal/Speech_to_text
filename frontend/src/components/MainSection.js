@@ -88,7 +88,7 @@ const MainSection = ({ token }) => {
             <Record setFile={setFile} />
           </div>
 
-          <div className="w-full max-w-[600px]">
+          <div className="w-full max-w-[600px] mb-[60px]">
             <TranscriptionCard transcription={transcription} />
           </div>
         </div>
