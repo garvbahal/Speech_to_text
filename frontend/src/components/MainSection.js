@@ -4,11 +4,13 @@ import Spinner from "./Spinner";
 import Record from "./Record";
 import TranscriptionCard from "./TranscriptionCard";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const MainSection = ({ token }) => {
   const [transcription, setTranscription] = useState("");
   const [file, setFile] = useState(null);
   const [spinner, setSpinner] = useState(false);
+  const navigate = useNavigate();
 
   function handleFileChange(event) {
     setFile(event.target.files[0]);
@@ -17,6 +19,7 @@ const MainSection = ({ token }) => {
   async function handleUpload() {
     if (!token) {
       toast.error("Log in First!");
+      navigate("/login");
       return;
     }
     setSpinner(true);
