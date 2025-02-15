@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TranscriptionCard from "../components/TranscriptionCard";
 import { motion } from "framer-motion";
+import Spinner from "../components/Spinner";
 
 const HistoryPage = ({ token }) => {
   const [history, setHistory] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     if (token) {
       fetchHistory();
@@ -12,6 +14,7 @@ const HistoryPage = ({ token }) => {
   }, [token]);
 
   async function fetchHistory() {
+    setLoading(true);
     try {
       const response = await axios.get(
         "https://speech-to-text-backend-k978.onrender.com/api/v1/history",
@@ -26,6 +29,7 @@ const HistoryPage = ({ token }) => {
     } catch (error) {
       console.log(error.message);
     }
+    setLoading(false);
   }
 
   return (
@@ -38,7 +42,9 @@ const HistoryPage = ({ token }) => {
           Let’s take a look at what you've transcribed so far
         </h2>
         <div className="flex flex-wrap sm:justify-center items-center lg:justify-between gap-y-14 mt-8 mb-8">
-          {history.length > 0 ? (
+          {isLoading ? (
+            <Spinner />
+          ) : history.length > 0 ? (
             history.map((one, index) => {
               return <TranscriptionCard key={index} transcription={one} />;
             })
