@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TranscriptionCard from "../components/TranscriptionCard";
+import { motion } from "framer-motion";
 
 const HistoryPage = ({ token }) => {
   const [history, setHistory] = useState([]);
@@ -25,22 +26,27 @@ const HistoryPage = ({ token }) => {
   }
 
   return (
-    <div className=" w-[90%] max-w-[1100px] mx-auto">
-      <h2 className="mt-[62px] font-poppins text-[2.0225rem] font-normal text-BlueSpeech text-center leading-8">
-        Let’s take a look at what you've transcribed so far
-      </h2>
-      <div className="flex flex-wrap sm:justify-center items-center lg:justify-between gap-y-14 mt-8 mb-8">
-        {history.length > 0 ? (
-          history.map((one) => {
-            return <TranscriptionCard transcription={one} />;
-          })
-        ) : (
-          <div className="mt-[62px] mx-auto font-poppins text-[2.0225rem] font-normal text-BlueSpeech leading-8">
-            No History Available
-          </div>
-        )}
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
+    >
+      <div className=" w-[90%] max-w-[1100px] mx-auto">
+        <h2 className="mt-[62px] font-poppins text-[2.0225rem] font-normal text-BlueSpeech text-center leading-8">
+          Let’s take a look at what you've transcribed so far
+        </h2>
+        <div className="flex flex-wrap sm:justify-center items-center lg:justify-between gap-y-14 mt-8 mb-8">
+          {history.length > 0 ? (
+            history.map((one) => {
+              return <TranscriptionCard transcription={one} />;
+            })
+          ) : (
+            <div className="mt-[62px] mx-auto font-poppins text-[2.0225rem] font-normal text-BlueSpeech leading-8">
+              No History Available
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
