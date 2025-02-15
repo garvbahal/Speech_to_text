@@ -15,7 +15,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage token={token} />} />
-        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/history" element={<HistoryPage token={token} />} />
         <Route
           path="/login"
           element={<LoginPage token={token} setToken={setToken} />}

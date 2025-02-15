@@ -18,9 +18,11 @@ const upload = multer({ storage: storage });
 const { toText } = require("../controllers/toText");
 const { authN } = require("../middlewares/AuthN");
 const { signup, login } = require("../controllers/Auth");
+const { history } = require("../controllers/History");
 
 router.post("/transcribe", authN, upload.single("audio"), toText);
 router.post("/login", login);
-router.post('/signup', signup);
+router.post("/signup", signup);
+router.get("/history", authN, history);
 
 module.exports = router;

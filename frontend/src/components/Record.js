@@ -18,7 +18,7 @@ const Record = ({ setFile }) => {
             <div className="flex justify-between w-full space-x-14 mb-7">
               <button
                 onClick={startRecording}
-                className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl"
+                className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-2/3 max-w-[267px] h-[60px] sm:h-[78px] rounded-full text-xl"
               >
                 START RECORDING
               </button>
@@ -26,7 +26,7 @@ const Record = ({ setFile }) => {
                 onClick={() => {
                   stopRecording();
                 }}
-                className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl"
+                className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-2/3 max-w-[267px] h-[60px] sm:h-[78px] rounded-full text-xl"
               >
                 STOP RECORDING
               </button>
@@ -35,7 +35,7 @@ const Record = ({ setFile }) => {
               <div className="flex justify-center">
                 <button
                   onClick={() => handleFileChange(mediaBlobUrl)}
-                  className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl"
+                  className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-2/3 max-w-[267px] h-[60px] sm:h-[78px] rounded-full text-xl"
                 >
                   CONVERT TO TEXT
                 </button>

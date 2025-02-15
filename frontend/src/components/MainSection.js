@@ -59,9 +59,9 @@ const MainSection = ({ token }) => {
       {spinner ? (
         <Spinner />
       ) : (
-        <div className=" flex flex-row w-[90%] max-w-[1100px] justify-between mt-[74px] gap-[86px]">
-          <div className="flex flex-col w-1/2">
-            <button className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl mt-11 mb-7 mx-auto">
+        <div className=" flex flex-row justify-center flex-wrap lg:flex-nowrap w-[90%] max-w-[1100px] lg:justify-between mt-[74px] gap-[86px] mx-auto">
+          <div className="flex flex-col  w-full max-w-[450px] mx-auto">
+            <button className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-2/3 max-w-[267px] h-[60px] sm:h-[78px] rounded-full text-xl mt-11 mb-7 mx-auto">
               <input
                 id="uploadbtn"
                 type="file"
@@ -77,7 +77,7 @@ const MainSection = ({ token }) => {
               </label>
             </button>
 
-            <div className="flex flex-row items-center space-x-2">
+            <div className="flex flex-row items-center space-x-2 w-full">
               <div className="bg-black w-full h-[1.5px]"></div>
               <div>OR</div>
               <div className="bg-black w-full h-[1.5px]"></div>
@@ -85,7 +85,7 @@ const MainSection = ({ token }) => {
             <Record setFile={setFile} />
           </div>
 
-          <div>
+          <div className="w-full max-w-[600px]">
             <TranscriptionCard transcription={transcription} />
           </div>
         </div>
