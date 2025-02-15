@@ -3,9 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import Loader from "../components/Loader";
 
 const LoginPage = ({ token, setToken }) => {
   const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -22,6 +24,7 @@ const LoginPage = ({ token, setToken }) => {
   }
 
   async function handleLogin() {
+    setLoading(true);
     if (!formData.username || !formData.password) {
       toast.error("Fill the credentials first");
       return;
@@ -42,6 +45,7 @@ const LoginPage = ({ token, setToken }) => {
     } catch (error) {
       toast.error("Login failed! Please check your credentials");
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -86,7 +90,7 @@ const LoginPage = ({ token, setToken }) => {
               className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl mx-auto"
               onClick={handleLogin}
             >
-              LOGIN
+              {isLoading ? <Loader /> : <p>LOGIN</p>}
             </button>
             <div className="mt-[47px] mx-auto text-lg">
               If you don't have account{" "}

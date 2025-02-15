@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Loader from "../components/Loader";
 
 const SignUpPage = ({ token }) => {
   const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -22,6 +24,7 @@ const SignUpPage = ({ token }) => {
   }
 
   async function handleSignUp() {
+    setLoading(true);
     if (!formData.username || !formData.password) {
       toast.error("Fill the credentials first!");
       return;
@@ -39,6 +42,7 @@ const SignUpPage = ({ token }) => {
     } catch (error) {
       toast.error("Sign Up Failed");
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -83,7 +87,7 @@ const SignUpPage = ({ token }) => {
               className=" bg-BlueSpeech drop-shadow-[1px_4px_12px_rgba(0,0,0,0.25)] text-white w-[267px] h-[78px] rounded-full text-xl mx-auto"
               onClick={handleSignUp}
             >
-              SIGNUP
+              {isLoading ? <Loader /> : <p>SIGN UP</p>}
             </button>
           </div>
         </div>
