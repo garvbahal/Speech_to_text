@@ -87,8 +87,10 @@ const NavBar = ({ token, setToken }) => {
         {/* drop down menu */}
         <div
           className={`${
-            isOpen ? "flex flex-col items-center" : "hidden"
-          } md:hidden bg-BlueSpeech absolute -right-[10px] top-[70px] rounded-[15px] w-1/4 py-4`}
+            isOpen
+              ? "flex flex-col items-center z-10 pointer-events-auto"
+              : "hidden"
+          } md:hidden bg-BlueSpeech   absolute -right-[10px] top-[70px] rounded-[15px] w-1/4 py-4`}
         >
           <NavLink
             to="/"
@@ -132,7 +134,7 @@ const NavBar = ({ token, setToken }) => {
                   location.pathname === "/login"
                     ? `font-semibold underline`
                     : `font-normal`
-                } font-poppins text-lg text-white`}
+                } font-poppins text-lg text-white `}
                 onClick={() => setIsOpen(false)}
               >
                 LOGIN
