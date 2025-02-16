@@ -17,7 +17,7 @@ const NavBar = ({ token, setToken }) => {
 
   return (
     <div className="bg-BlueSpeech ">
-      <div className="w-[90%] relative max-w-[1100px] mx-auto flex justify-between py-[20px]">
+      <div className="w-[90%] relative max-w-[1100px] mx-auto flex items-center justify-between py-[20px]">
         <div className=" font-poppins text-2xl text-white tracking-[0.12rem] font-bold cursor-pointer">
           <NavLink to="/">Speech To Text Converter</NavLink>
         </div>
@@ -30,11 +30,11 @@ const NavBar = ({ token, setToken }) => {
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        <div className="hidden md:flex space-x-[30px]">
+        <div className="hidden md:flex space-x-7">
           <NavLink
             to="/"
             className={`${
-              location.pathname === "/" ? `font-semibold` : `font-normal`
+              location.pathname === "/" ? `font-semibold ` : `font-normal`
             }  font-poppins text-lg  text-white transition-all duration-200`}
           >
             HOME
@@ -52,21 +52,35 @@ const NavBar = ({ token, setToken }) => {
                 HISTORY
               </NavLink>
               <button
-                className="font-poppins text-white text-lg font-medium"
+                className="font-poppins  text-white text-lg font-medium"
                 onClick={handleLogOut}
               >
                 LOG OUT
               </button>
             </div>
           ) : (
-            <NavLink
-              to="/login"
-              className={`${
-                location.pathname === "/login" ? `font-semibold` : `font-normal`
-              }  font-poppins text-lg  text-white transition-all duration-200`}
-            >
-              LOGIN
-            </NavLink>
+            <div className="flex gap-x-7">
+              <NavLink
+                to="/login"
+                className={`${
+                  location.pathname === "/login"
+                    ? `font-semibold `
+                    : `font-normal`
+                }  font-poppins text-lg text-white transition-all duration-200`}
+              >
+                LOGIN
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className={`${
+                  location.pathname === "/signup"
+                    ? `font-semibold `
+                    : `font-normal `
+                }  font-poppins text-lg  text-white transition-all duration-200`}
+              >
+                SIGNUP
+              </NavLink>
+            </div>
           )}
         </div>
 
@@ -111,17 +125,30 @@ const NavBar = ({ token, setToken }) => {
               </button>
             </div>
           ) : (
-            <NavLink
-              to="/login"
-              className={`${
-                location.pathname === "/login"
-                  ? `font-semibold underline`
-                  : `font-normal`
-              } font-poppins text-lg text-white`}
-              onClick={() => setIsOpen(false)}
-            >
-              LOGIN
-            </NavLink>
+            <div className="flex flex-col items-center">
+              <NavLink
+                to="/login"
+                className={`${
+                  location.pathname === "/login"
+                    ? `font-semibold underline`
+                    : `font-normal`
+                } font-poppins text-lg text-white`}
+                onClick={() => setIsOpen(false)}
+              >
+                LOGIN
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className={`${
+                  location.pathname === "/signup"
+                    ? `font-semibold underline`
+                    : `font-normal`
+                } font-poppins text-lg text-white`}
+                onClick={() => setIsOpen(false)}
+              >
+                SIGNUP
+              </NavLink>
+            </div>
           )}
         </div>
       </div>
